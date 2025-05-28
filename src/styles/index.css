@@ -1,0 +1,95 @@
+:root {
+  --dark-bg: #0a0a0a;
+  --dark-surface: #121212;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --unicorn-purple: #b66eff;
+  --unicorn-blue: #00d4ff;
+  --gradient-magic: linear-gradient(45deg, var(--unicorn-purple), var(--unicorn-blue));
+}
+
+/* Animated gradient text for navbar */
+.animated-gradient-text {
+  font-weight: 600;
+  font-size: 1.125rem; /* text-lg */
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #00ccff, #ff00cc);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 8s ease infinite;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  user-select: none;
+}
+
+/* Subtle vertical floating animation */
+.animated-gradient-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  animation: floatUpDown 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Visit Magic Unicorn link container */
+.visit-magicunicorn-container {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: var(--dark-surface);
+  border-top: 1px solid rgba(182, 110, 255, 0.3);
+  border-bottom: 1px solid rgba(182, 110, 255, 0.3);
+}
+
+.visit-magicunicorn-link {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--unicorn-purple);
+  text-decoration: none;
+  background: linear-gradient(45deg, var(--unicorn-purple), var(--unicorn-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.visit-magicunicorn-link:hover,
+.visit-magicunicorn-link:focus {
+  color: var(--unicorn-blue);
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Footer link styling */
+.footer-link {
+  color: var(--unicorn-purple);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: var(--unicorn-blue);
+  outline: none;
+}

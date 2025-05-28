@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: magic-unicorn-web
+    restart: unless-stopped
+    ports:
+      - "3000:80"  # This makes it accessible on all networks at port 3000
+    networks:
+      - magic-network
+
+networks:
+  magic-network:
+    driver: bridge

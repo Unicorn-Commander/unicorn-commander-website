@@ -1,0 +1,70 @@
+/* Base card styles */
+.card-base {
+  background: var(--dark-surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-speed) var(--transition-timing);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-magic);
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.card-base:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(182, 110, 255, 0.1);
+}
+
+.card-base:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card title styles */
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  background: var(--gradient-magic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card content styles */
+.card-content {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Card icon styles */
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  background: var(--gradient-magic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+}
+
+@media (max-width: 768px) {
+  .card-base {
+    padding: var(--spacing-md);
+  }
+}
