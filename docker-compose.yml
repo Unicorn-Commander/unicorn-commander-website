@@ -8,7 +8,7 @@ services:
     container_name: magic-unicorn-web
     restart: unless-stopped
     ports:
-      - "3000:80"  # This makes it accessible on all networks at port 3000
+      - "7878:80"  # This makes it accessible on all networks at port 7878
     networks:
       - magic-network
 
