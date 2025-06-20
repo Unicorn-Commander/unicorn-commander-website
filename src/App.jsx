@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Features from './pages/Features';
 import Specs from './pages/Specs';
-import Services from './pages/Services';
 import Contact from './pages/Contact';
 
 // Track page views with Google Analytics
@@ -35,7 +34,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/features" element={<Features />} />
         <Route path="/specs" element={<Specs />} />
-        <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

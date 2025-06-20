@@ -221,6 +221,7 @@ body {
   right: 0;
   bottom: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .sparkle {
@@ -230,6 +231,8 @@ body {
   border-radius: 50%;
   background: var(--unicorn-purple);
   box-shadow: 0 0 10px var(--unicorn-purple);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Page Headers */

@@ -1,18 +1,39 @@
 #!/bin/bash
 
-# Deploy script for Magic Unicorn Tech website
-# Usage: ./deploy.sh [--clean]
+# Deploy script for Unicorn Commander website
+# Usage: ./deploy.sh [--clean] [--port PORT]
 
 set -e  # Exit on any error
 
-echo "🦄 Deploying Magic Unicorn Tech website..."
+echo "🦄 Deploying Unicorn Commander website..."
+
+# Default values
+CLEAN_BUILD=false
+PORT=7878
 
 # Parse arguments
-CLEAN_BUILD=false
-if [[ "$1" == "--clean" ]]; then
-    CLEAN_BUILD=true
-    echo "🧹 Clean build requested"
-fi
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --clean)
+            CLEAN_BUILD=true
+            echo "🧹 Clean build requested"
+            shift
+            ;;
+        --port)
+            PORT="$2"
+            echo "🔌 Using port: $PORT"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option $1"
+            echo "Usage: ./deploy.sh [--clean] [--port PORT]"
+            exit 1
+            ;;
+    esac
+done
+
+# Export port for docker-compose
+export WEB_PORT=$PORT
 
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
@@ -36,7 +57,7 @@ sleep 5
 # Check if container is running
 if docker compose ps | grep -q "Up"; then
     echo "✅ Deployment successful!"
-    echo "🌐 Website is now available at: http://localhost:7878"
+    echo "🌐 Website is now available at: http://localhost:$PORT"
     echo "📊 Container status:"
     docker compose ps
 else

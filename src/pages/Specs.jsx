@@ -401,8 +401,14 @@ function Specs() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <button className="cta-button primary">Pre-Order UC-1</button>
-                <button className="cta-button secondary">Download Full Specs</button>
+                <a 
+                  href="https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-button primary"
+                >
+                  Order UC-1 - $1500
+                </a>
               </motion.div>
             </motion.div>
           </section>

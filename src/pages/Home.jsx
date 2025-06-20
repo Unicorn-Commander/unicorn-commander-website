@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaShieldAlt, FaCubes, FaCloud, FaBolt, FaSearch, FaTools } from 'react-icons/fa';
-import { UnicornLogo } from '../images';
+import TheColonelPNG from '../images/The_Colonel Background Removed.png';
 import '../styles/Home.css';
 
 // Lazy load components
@@ -45,14 +45,24 @@ export default function Home() {
           ))}
         </div>
         <Suspense fallback={<div>Loading...</div>}>
-          <motion.img 
-            src={UnicornLogo}
-            alt="Magic Unicorn Logo" 
-            className="hero-logo"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          />
+          <div className="hero-logo-wrapper">
+            <motion.img 
+              src={TheColonelPNG}
+              alt="The Colonel Logo" 
+              className="hero-logo"
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
+            <motion.div 
+              className="agent-subtitle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              -The Colonel, UC-1 Commander
+            </motion.div>
+          </div>
         </Suspense>
         <motion.div 
           className="product-title"
@@ -80,21 +90,21 @@ export default function Home() {
         >
           Run the models you love—locally or from the cloud. UC-1 plays nice with OpenAI, Anthropic, Gemini, and more.
         </motion.p>
-        <div className="cta-buttons">
+        <motion.div 
+          className="cta-buttons"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+        >
           <div className="cta-container">
-            <motion.a 
+            <a 
               href="https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
             >
               Order Now
-            </motion.a>
+            </a>
             <motion.span 
               className="price-tag"
               initial={{ opacity: 0 }}
@@ -104,18 +114,14 @@ export default function Home() {
               $1,500
             </motion.span>
           </div>
-          <motion.a 
-            href="/features" 
+          <Link 
+            to="/features" 
             className="btn btn-secondary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Explore Features
-          </motion.a>
-        </div>
+          </Link>
+        </motion.div>
       </section>
 
       {/* Demo Video Feature */}

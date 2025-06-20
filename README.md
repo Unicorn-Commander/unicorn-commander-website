@@ -1,76 +1,219 @@
-# Magic Unicorn Tech Website
+# Unicorn Commander UC-1 Website
 
-A modern React website built with Vite, featuring responsive design and smooth animations.
+<div align="center">
 
-## Website Preview
+![Magic Unicorn Tech](src/images/unicorn.svg)
 
-![Magic Unicorn Tech Website](src/images/uc1-website.jpg)
+**Developed by Magic Unicorn Unconventional Technology & Stuff Inc.**
 
-## Quick Start with Docker
+</div>
+
+---
+
+## 🦄 About
+
+Welcome to the official website for **Unicorn Commander UC-1** - your command center for AI. Built for creators, entrepreneurs, and renegades who want to own their tools, customize their workflows, and crush cloud dependence.
+
+<div align="center">
+
+![UC-1 Desktop](public/images/UC-1_desktop2.png)
+
+*UC-1 Desktop Environment - Customized KDE Plasma Interface*
+
+</div>
+
+## 🤖 Meet The Colonel
+
+<div align="center">
+
+![The Colonel](src/images/The_Colonel_icon.svg)
+
+*The Colonel - UC-1 Commander Agent*
+
+</div>
+
+The Colonel is your AI commander agent, part of our growing squad of unicorn agents designed to help you take command of your AI workflows with military precision and unicorn magic.
+
+## 🚀 What is UC-1?
+
+Unicorn Commander UC-1 is a modular, fully local AI powerhouse that combines:
+
+- **Local LLM inference** with GPU acceleration
+- **Lightning-fast vector search** & reranking
+- **Embedded agents** with memory and task autonomy
+- **Seamless support** for image generation, research, speech-to-text, and more
+- **Modular services** you own, not rent
+
+### Key Features
+
+- 🔒 **Privacy First**: Your data stays with you, always
+- 🧩 **Modular Design**: Upgrade hardware, swap software stacks, deploy custom AI agents
+- 🌐 **Open Source**: Built on open standards and community-powered
+- ⚡ **One-Click Setup**: Instant deployment, no PhD required
+- 🔍 **Advanced Search**: Deep search capabilities with powerful indexing
+- 🛠️ **Local Tools**: Run custom tools and function servers locally
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18 with Vite
+- **Styling**: CSS3 with Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Routing**: React Router DOM
+- **Deployment**: Docker with Nginx
+
+## 🚢 Quick Start
 
 ### Prerequisites
-- Docker
-- Docker Compose
 
-### Deploy with Single Command
+- Node.js 18 or higher
+- Docker and Docker Compose (for production deployment)
+
+### Development
+
 ```bash
-# Make deploy script executable and run deployment
-./deploy.sh
+# Clone the repository
+git clone https://github.com/SkyBehind/website-uc-1.git
+cd website-uc-1
 
-# For clean build (removes old images)
-./deploy.sh --clean
-```
-
-Or manually with Docker Compose:
-```bash
-docker compose up --build -d
-```
-
-The site will be available at **http://localhost:7878**
-
-### Stop the Application
-```bash
-docker compose down
-```
-
-### View Logs
-```bash
-docker compose logs -f
-```
-
-## Development
-
-### Local Development
-```bash
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
-### Production Build
+The development server will start on `http://localhost:7878` with full CORS support and hot reloading.
+
+### Production Deployment
+
+#### Using Docker (Recommended)
+
 ```bash
+# Deploy with default settings (port 7878)
+./deploy.sh
+
+# Deploy on custom port
+./deploy.sh --port 8080
+
+# Clean deployment (removes old images)
+./deploy.sh --clean --port 9000
+```
+
+#### Manual Build
+
+```bash
+# Build for production
 npm run build
+
+# Preview production build
 npm run preview
 ```
 
-## Project Structure
+## 🐳 Docker Configuration
+
+The project includes a complete Docker setup with:
+
+- **Multi-stage build** for optimized production images
+- **Nginx configuration** for SPA routing
+- **Health checks** for container monitoring
+- **Flexible port configuration**
+- **Production optimizations** with asset caching
+
+### Docker Commands
+
+```bash
+# Build and start containers
+docker compose up --build -d
+
+# Stop containers
+docker compose down
+
+# View logs
+docker compose logs
+
+# Check container status
+docker compose ps
+```
+
+## 📁 Project Structure
 
 ```
-src/
-├── components/     # Reusable React components
-├── pages/         # Page components
-├── styles/        # CSS modules and global styles
-├── services/      # API services
-├── hooks/         # Custom React hooks
-├── images/        # Static images and assets
-└── utils/         # Utility functions
+website-uc-1/
+├── public/                 # Static assets
+│   └── images/            # Product images
+├── src/
+│   ├── components/        # React components
+│   ├── pages/            # Page components
+│   ├── styles/           # CSS stylesheets
+│   ├── images/           # UI assets and logos
+│   └── utils/            # Utility functions
+├── docker-compose.yml    # Docker configuration
+├── Dockerfile           # Production container setup
+└── deploy.sh           # Deployment script
 ```
 
-## Tech Stack
+## 🎨 Key Pages
 
-- **React 18** - Frontend framework
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **React Router** - Client-side routing
-- **Docker** - Containerization
-- **Nginx** - Production web server
+- **Home**: Hero section with The Colonel and product showcase
+- **About**: Comprehensive product information and roadmap
+- **Features**: Detailed feature breakdown and technical diagrams
+- **Specs**: Complete technical specifications
+- **Contact**: Get in touch with the Magic Unicorn team
+
+## 🔧 Configuration
+
+### Environment Variables
+
+- `WEB_PORT`: Port for Docker deployment (default: 7878)
+- `NODE_ENV`: Environment mode (development/production)
+
+### Vite Configuration
+
+The project uses Vite with:
+- Host binding to `0.0.0.0` for network access
+- Port 7878 as default
+- Full CORS support
+- Allowed hosts configuration for domain access
+
+## 🚀 Deployment Options
+
+### Development
+- **Port**: 7878
+- **Host**: 0.0.0.0 (all interfaces)
+- **Hot Reload**: Enabled
+- **CORS**: Full support
+
+### Production
+- **Container**: Nginx-based Docker container
+- **Port**: Configurable (default 7878)
+- **Caching**: Optimized asset caching
+- **Health Checks**: Automated monitoring
+
+## 🌟 Order UC-1
+
+Ready to take command of your AI? 
+
+**Order your Unicorn Commander UC-1 today for $1,500**
+
+[Order Now](https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00)
+
+## 🤝 Contributing
+
+This project represents the cutting-edge work of Magic Unicorn Unconventional Technology & Stuff Inc. For inquiries about UC-1 or collaboration opportunities, please visit our [contact page](https://unicorncommander.com/contact).
+
+## 📞 Support
+
+- **Website**: [unicorncommander.com](https://unicorncommander.com)
+- **Email**: aaron@magicunicorn.tech
+- **Company**: Magic Unicorn Unconventional Technology & Stuff Inc.
+
+---
+
+<div align="center">
+
+**Built with 🦄 magic by Magic Unicorn Tech**
+
+*Transforming Ideas into Magic with AI & Innovation*
+
+</div>

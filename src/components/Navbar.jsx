@@ -69,9 +69,6 @@ export default function Navbar() {
           <Link to="/specs" className={location.pathname === '/specs' ? 'active' : ''} aria-label="Specs" onClick={handleNavClick}>
             Specs
           </Link>
-          <Link to="/services" className={location.pathname === '/services' ? 'active' : ''} aria-label="Services" onClick={handleNavClick}>
-            Services
-          </Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''} aria-label="Contact" onClick={handleNavClick}>
             Contact
           </Link>

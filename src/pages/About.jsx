@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import BackgroundSparkles from '../components/BackgroundSparkles'
-import { FaRocket, FaUsers, FaCode, FaHeart, FaLock, FaCubes, FaGlobe, FaBrain, FaTools, FaUserLock, FaBriefcase, FaCheckCircle, FaCompass, FaWrench, FaGlobeAmericas, FaLightbulb, FaShoppingCart } from 'react-icons/fa'
+import { FaRocket, FaUsers, FaCode, FaHeart, FaLock, FaCubes, FaGlobe, FaBrain, FaTools, FaUserLock, FaBriefcase, FaCheckCircle, FaCompass, FaWrench, FaGlobeAmericas, FaLightbulb, FaShoppingCart, FaTimes } from 'react-icons/fa'
 import '../styles/About.css'
 import LazyImage from '../components/LazyImage'
 
 function About() {
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  const openImageModal = (image) => {
+    setSelectedImage(image)
+  }
+
+  const closeImageModal = () => {
+    setSelectedImage(null)
+  }
+
   const ucFeatures = [
     {
       icon: <FaLock />,
@@ -110,19 +121,19 @@ function About() {
   // UC-1 product images
   const productImages = [
     {
-      src: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      src: "/images/UC-1_on_table.jpeg",
       alt: "UC-1 Command Center - Front View",
-      caption: "The UC-1 Command Center features a sleek, minimalist design with customizable RGB lighting."
+      caption: "The UC-1 Command Center features a sleek, minimalist design with OcuLink for expandability."
     },
     {
-      src: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      alt: "UC-1 Internal Hardware",
+      src: "/images/uc-1_hardware_specs.jpg",
+      alt: "UC-1 Internal Hardware", 
       caption: "Powerful internal components include high-performance GPU, 96GB RAM, and 2TB NVMe storage."
     },
     {
-      src: "https://images.pexels.com/photos/4792729/pexels-photo-4792729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      src: "/images/UC-1_desktop2.png",
       alt: "UC-1 in Action - Desktop View",
-      caption: "The KDE Plasma desktop environment provides an intuitive interface for managing your AI workflows."
+      caption: "A customized desktop based on KDE Plasma provides an intuitive interface for managing your AI workflows."
     }
   ]
 
@@ -166,8 +177,11 @@ function About() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + (index * 0.1) }}
                 >
-                  <div className="image-container">
-                    <LazyImage src={image.src} alt={image.alt} className="product-image" />
+                  <div className="image-container" onClick={() => openImageModal(image)}>
+                    <img src={image.src} alt={image.alt} className="product-image clickable-image" />
+                    <div className="image-overlay">
+                      <span className="click-to-expand">Click to expand</span>
+                    </div>
                   </div>
                   <p className="image-caption">{image.caption}</p>
                 </motion.div>
@@ -406,21 +420,29 @@ function About() {
               <p>We're not building a product. We're building a movement. A rebellion against Big Cloud. A platform where you control the magic—and profit from it.</p>
               
               <div className="roadmap-cta">
-                <motion.button 
-                  className="cta-button learn-more-button"
+                <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Learn More About UC-1
-                </motion.button>
+                  <Link 
+                    to="/specs"
+                    className="cta-button learn-more-button"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  >
+                    Learn More About UC-1
+                  </Link>
+                </motion.div>
                 
-                <motion.button 
+                <motion.a 
+                  href="https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="cta-button order-now-button"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaShoppingCart className="button-icon" /> Order Now - $1500
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           </section>
@@ -478,14 +500,51 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <button className="cta-button">
-                  Learn More About UC-1
-                </button>
+                <a 
+                  href="https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-button"
+                >
+                  Order Now - $1500
+                </a>
               </motion.div>
             </motion.div>
           </section>
         </div>
       </main>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <motion.div 
+          className="image-modal-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeImageModal}
+        >
+          <motion.div 
+            className="image-modal-content"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="modal-close-button" onClick={closeImageModal}>
+              <FaTimes />
+            </button>
+            <img 
+              src={selectedImage.src} 
+              alt={selectedImage.alt} 
+              className="modal-image"
+            />
+            <div className="modal-caption">
+              <h3>{selectedImage.alt}</h3>
+              <p>{selectedImage.caption}</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   )
 }
