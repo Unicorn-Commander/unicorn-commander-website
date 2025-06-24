@@ -1,0 +1,33 @@
+# Development Dockerfile for UC-1 Website
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies)
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Create a non-root user for security
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001 -G nodejs && \
+    chown -R nextjs:nodejs /app
+
+# Switch to non-root user
+USER nextjs
+
+# Expose development port
+EXPOSE 6464
+
+# Set environment variables for development
+ENV NODE_ENV=development
+ENV VITE_HOST=0.0.0.0
+ENV VITE_PORT=6464
+
+# Start development server with hot reload
+CMD ["npm", "run", "dev"]

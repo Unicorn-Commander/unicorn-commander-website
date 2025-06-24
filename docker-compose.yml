@@ -4,16 +4,28 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: unicorn-commander-web
+      dockerfile: Dockerfile.dev
+    container_name: unicorn-commander-uc1-container
     restart: unless-stopped
     ports:
-      - "${WEB_PORT:-7878}:80"  # Use WEB_PORT env var, default to 7878
+      - "0.0.0.0:${HOST_PORT:-6464}:6464"  # Development port with hot reload, accessible from all hosts
     networks:
-      - unicorn-network
+      - uc1-network
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+      - VITE_HOST=0.0.0.0
+      - VITE_PORT=6464
+    volumes:
+      # Mount source code for hot reload
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.js:/app/vite.config.js
+      - ./package.json:/app/package.json
+      # Exclude node_modules to avoid conflicts
+      - /app/node_modules
+    command: npm run dev
 
 networks:
-  unicorn-network:
+  uc1-network:
     driver: bridge

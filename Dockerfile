@@ -31,13 +31,26 @@ RUN rm -f /etc/nginx/conf.d/default.conf && \
     echo '    server_name localhost;' >> /etc/nginx/conf.d/default.conf && \
     echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
     echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    ' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Gzip compression' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip on;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_min_length 1000;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    ' >> /etc/nginx/conf.d/default.conf && \
     echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
     echo '        try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf && \
     echo '    }' >> /etc/nginx/conf.d/default.conf && \
-    echo '    location /images/ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '    ' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Cache static assets' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp)$ {' >> /etc/nginx/conf.d/default.conf && \
     echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
     echo '        add_header Cache-Control "public, immutable";' >> /etc/nginx/conf.d/default.conf && \
     echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '    ' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Security headers' >> /etc/nginx/conf.d/default.conf && \
+    echo '    add_header X-Content-Type-Options nosniff;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    add_header X-Frame-Options DENY;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    add_header X-XSS-Protection "1; mode=block";' >> /etc/nginx/conf.d/default.conf && \
     echo '}' >> /etc/nginx/conf.d/default.conf
 
 # Expose port 80
