@@ -198,6 +198,22 @@ Ready to take command of your AI?
 
 [Order Now](https://buy.stripe.com/cNi5kDf0h0n45K2cHk18c00)
 
+## 📊 Analytics
+
+This website uses Umami Analytics, a privacy-focused, open-source analytics solution hosted at [https://analytics.magicunicorn.tech/](https://analytics.magicunicorn.tech/).
+
+### Analytics Implementation
+The tracking script is included in `index.html`:
+```html
+<script defer src="https://analytics.magicunicorn.tech/script.js" data-website-id="5aa71876-295f-43db-82c2-37d5ecfe56b9"></script>
+```
+
+### Privacy Features
+- No cookies used
+- GDPR compliant
+- No personal data collection
+- All data stays on our servers
+
 ## 🤝 Contributing
 
 This project represents the cutting-edge work of Magic Unicorn Unconventional Technology & Stuff Inc. For inquiries about UC-1 or collaboration opportunities, please visit our [contact page](https://unicorncommander.com/contact).
