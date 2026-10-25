@@ -237,8 +237,6 @@ This project represents the cutting-edge work of Magic Unicorn Unconventional Te
 
 ## License
 
-unicorn-commander-website is licensed under the **GNU Affero General Public License v3.0** (AGPL-3.0-or-later) — see [LICENSE](LICENSE).
+unicorn-commander-website is licensed under the [Apache License 2.0](LICENSE). The licence covers the code; the Magic Unicorn and Unicorn Commander names and logos are trademarks (see [TRADEMARKS.md](TRADEMARKS.md)).
 
-A **commercial license** is available for organizations that cannot meet the AGPL's network-copyleft obligations (for example, offering unicorn-commander-website as a hosted service without releasing their modifications). Contact **licensing@unicorncommander.ai**.
-
-© 2026 Magic Unicorn Unconventional Technology & Stuff Inc.
+The site's written content, photos and illustrations are © Magic Unicorn Unconventional Technology & Stuff Inc. and are not covered by the licence.
